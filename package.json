@@ -1,0 +1,22 @@
+{
+  "name": "101_js_exercises",
+  "version": "1.0.0",
+  "description": "test driven development",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amberlovescats14/101_js_exercises.git"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "amber jones",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amberlovescats14/101_js_exercises/issues"
+  },
+  "homepage": "https://github.com/amberlovescats14/101_js_exercises#readme"
+}
