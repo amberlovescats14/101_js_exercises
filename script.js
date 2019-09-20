@@ -677,8 +677,8 @@ addToDone("Exercise 46 is correct.")
 
 
 // Exercise 47
-// Write a function definition named startsWithVowel that takes in string and true if the string starts with a vowel
-
+// Write a function definition named startsWithVowel that takes in string and returns true if the string starts with a vowel
+const startsWithVowel = str => (/[a,e,i,o,u]/i).test(str[0])
 
 assert(startsWithVowel("ubuntu"), true, "Exercise 47");
 assert(startsWithVowel("banana"), false, "Exercise 47");
@@ -688,7 +688,7 @@ addToDone("Exercise 47 is correct.")
 
 // Exercise 48
 // Write a function definition named endsWithVowel that takes in string and true if the string ends with a vowel
-
+const endsWithVowel = str => (/[a,e,i,o,u]/i).test(str.charAt(str.length-1))
 
 assert(endsWithVowel("ubuntu"), true, "Exercise 48");
 assert(endsWithVowel("banana"), true, "Exercise 48");
@@ -699,6 +699,10 @@ addToDone("Exercise 48 is correct.")
 
 // Exercise 49
 // Write a function definition named startsAndEndsWithVowel that takes in string and returns true if the string starts and ends with a vowel
+const startsAndEndsWithVowel = str => (
+  (/[a,e,i,o,u]/i).test(str[0]) &&
+  (/[a,e,i,o,u]/i).test(str.charAt(str.length-1))
+)
 
 assert(startsAndEndsWithVowel("ubuntu"), true, "Exercise 49");
 assert(startsAndEndsWithVowel("banana"), false, "Exercise 49");
@@ -708,6 +712,7 @@ addToDone("Exercise 49 is correct.")
 
 // Exercise 50
 // Write a function definition named first that takes in sequence and returns the first value of that sequence.
+const first = sqn => sqn[0]
 
 assert(first("ubuntu"), "u", "Exercise 50");
 assert(first([1, 2, 3]), 1, "Exercise 50");
@@ -719,6 +724,7 @@ addToDone("Exercise 50 is correct.")
 
 // Exercise 51
 // Write a function definition named second that takes in sequence and returns the second value of that sequence.
+const second = sqn => sqn[1]
 
 assert(second("ubuntu"), "b", "Exercise 51");
 assert(second([1, 2, 3]), 2, "Exercise 51");
@@ -728,7 +734,7 @@ addToDone("Exercise 51 is correct.")
 
 // Exercise 52
 // Write a function definition named third that takes in sequence and returns the third value of that sequence.
-
+const third = sqn => sqn[2]
 assert(third("ubuntu"), "u", "Exercise 52");
 assert(third([1, 2, 3]), 3, "Exercise 52");
 assert(third(["JS", "is", "awesome"]), "awesome", "Exercise 52");
@@ -737,6 +743,7 @@ addToDone("Exercise 52 is correct.")
 
 // Exercise 53
 // Write a function definition named forth that takes in sequence and returns the forth value of that sequence.
+const forth = sqn => sqn[3]
 
 assert(forth("ubuntu"), "n", "Exercise 53");
 assert(forth([1, 2, 3, 4]), 4, "Exercise 53");
@@ -746,6 +753,8 @@ addToDone("Exercise 53 is correct.")
 
 // Exercise 54
 // Write a function definition named last that takes in sequence and returns the last value of that sequence.
+const last = sqn => sqn[sqn.length-1]
+
 
 assert(last("ubuntu"), "u", "Exercise 54");
 assert(last([1, 2, 3, 4]), 4, "Exercise 54");
@@ -756,6 +765,7 @@ addToDone("Exercise 54 is correct.")
 
 // Exercise 55
 // Write a function definition named secondToLast that takes in sequence and returns the second to last value of that sequence.
+const secondToLast = sqn => sqn[sqn.length-2]
 
 assert(secondToLast("ubuntu"), "t", "Exercise 55");
 assert(secondToLast([1, 2, 3, 4]), 3, "Exercise 55");
@@ -766,6 +776,7 @@ addToDone("Exercise 55 is correct.")
 
 // Exercise 56
 // Write a function definition named thirdToLast that takes in sequence and returns the third to last value of that sequence.
+const thirdToLast = sqn => sqn[sqn.length-3]
 
 assert(thirdToLast("ubuntu"), "n", "Exercise 56");
 assert(thirdToLast([1, 2, 3, 4]), 2, "Exercise 56");
@@ -776,6 +787,7 @@ addToDone("Exercise 56 is correct.")
 
 // Exercise 57
 // Write a function definition named firstAndSecond that takes in sequence and returns the first and second value of that sequence as an array
+const firstAndSecond = sqn => [sqn[0], sqn[1]]
 
 assert(firstAndSecond([1, 2, 3, 4]), [1, 2], "Exercise 57");
 assert(firstAndSecond(["JS", "is", "awesome"]), ["JS", "is"], "Exercise 57");
@@ -785,6 +797,7 @@ addToDone("Exercise 57 is correct.")
 
 // Exercise 58
 // Write a function definition named firstAndLast that takes in sequence and returns the first and last value of that sequence as an array
+const firstAndLast = sqn => [sqn[0], sqn[sqn.length-1]]
 
 assert(firstAndLast([1, 2, 3, 4]), [1, 4], "Exercise 58");
 assert(firstAndLast(["JS", "is", "awesome"]), ["JS", "awesome"], "Exercise 58");
@@ -795,6 +808,10 @@ addToDone("Exercise 58 is correct.")
 
 // Exercise 59
 // Write a function definition named firstToLast that takes in sequence and returns the sequence with the first value moved to the end of the sequence.
+const firstToLast = sqn => {
+   let first = sqn.shift()
+   return sqn.concat(first)
+}
 
 assert(firstToLast([1, 2, 3, 4]), [2, 3, 4, 1], "Exercise 59");
 assert(firstToLast(["JS", "is", "awesome"]), ["is", "awesome", "JS"], "Exercise 59");
@@ -805,6 +822,8 @@ addToDone("Exercise 59 is correct.")
 
 // Exercise 60
 // Write a function definition named sumAll that takes in sequence of numbers and returns all the numbers added together.
+const sumAll = sqn => sqn.reduce((a,b) => a + b)
+
 
 assert(sumAll([1, 2, 3, 4]), 10, "Exercise 60");
 assert(sumAll([3, 3, 3]), 9, "Exercise 60");
@@ -815,6 +834,7 @@ addToDone("Exercise 60 is correct.")
 
 //  Exercise 61
 //  Write a function definition named mean that takes in sequence of numbers and returns the average value
+const mean = sqn => sqn.reduce((a,b)=> a + b) / sqn.length
 
 assert(mean([1, 2, 3, 4]), 2.5, "Exercise 61");
 assert(mean([3, 3, 3]), 3, "Exercise 61");
@@ -825,17 +845,28 @@ addToDone("Exercise 61 is correct.")
 
 // Exercise 62
 // Write a function definition named median that takes in sequence of numbers and returns the average value
+const median = sqn => {
+  sqn.sort()
+  if(sqn.length % 2 !== 0 ) return sqn[(sqn.length-1 )/2]
+  
+  let firstHalf = sqn.splice(0, (sqn.length)/2)
+  let secondHalf = sqn.splice((sqn.length-1 )/2)
+  return (firstHalf[firstHalf.length-1] + secondHalf[0]) / 2
+    }
 
-assert(median([1, 2, 3, 4, 5]), 3.0, "Exercise 62");
-assert(median([1, 2, 3]), 2.0, "Exercise 62");
-assert(median([1, 5, 6]), 5.0, "Exercise 62");
+// assert(median([1, 2, 3, 4, 5]), 3.0, "Exercise 62");
+// assert(median([1, 2, 3]), 2.0, "Exercise 62");
+// assert(median([1, 5, 6]), 5.0, "Exercise 62");
 assert(median([1, 2, 5, 6]), 3.5, "Exercise 62");
 addToDone("Exercise 62 is correct.")
 
 
 // Exercise 63
 // Write a function definition named maxMinusMin that takes in an array of numbers and returns the difference of the maximum minus theminimum.
-
+const maxMinusMin = arr => {
+  arr.sort()
+  return arr[arr.length-1] - arr[0]
+}
 
 assert(maxMinusMin([1, 2, 2, 8, 3, 4]), 7, "Exercise 63");
 assert(maxMinusMin([1, 1, 2, 3, 9]), 8, "Exercise 63");
@@ -845,6 +876,7 @@ addToDone("Exercise 63 is correct.")
 
 // Exercise 64
 // Write a function definition named productOfAll that takes in sequence of numbers and returns the product of multiplying all the numbers together
+const productOfAll = sqn => sqn.reduce((a,b)=> a*b)
 
 assert(productOfAll([1, 2, 3]), 6, "Exercise 64");
 assert(productOfAll([3, 4, 5]), 60, "Exercise 64");
@@ -854,7 +886,7 @@ addToDone("Exercise 64 is correct.")
 
 // Exercise 65
 // Write a function definition named getHighestNumber that takes in sequence of numbers and returns the largest number.
-
+const getHighestNumber = sqn => Math.max(...sqn)
 
 assert(getHighestNumber([1, 2, 3]), 3, "Exercise 65");
 assert(getHighestNumber([1, 5, 2, 3, 4]), 5, "Exercise 65");
@@ -866,7 +898,7 @@ addToDone("Exercise 65 is correct.")
 
 // Exercise 66
 // Write a function definition named getSmallestNumber that takes in sequence of numbers and returns the smallest number.
-
+const getSmallestNumber = sqn => Math.min(...sqn)
 
 assert(getSmallestNumber([1, 2, 3]), 1, "Exercise 66");
 assert(getSmallestNumber([3, 5, 9, 8, 1]), 1, "Exercise 66");
@@ -876,6 +908,13 @@ addToDone("Exercise 66 is correct.")
 
 // Exercise 67
 // Write a function definition named onlyOddNumbers that takes in sequence of numbers and returns the odd numbers in an array.
+const onlyOddNumbers = sqn => {
+  let answer = []
+  sqn.forEach(n => {
+    if(n % 2 !== 0) answer.push(n)
+  })
+  return answer
+}
 
 assert(onlyOddNumbers([1, 2, 3]), [1, 3], "Exercise 67");
 assert(onlyOddNumbers([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), [-5, -3, -1, 1, 3, 5], "Exercise 67");
@@ -886,6 +925,13 @@ addToDone("Exercise 67 is correct.")
 
 // Exercise 68
 // Write a function definition named onlyEvenNumbers that takes in sequence of numbers and returns the even numbers in an array.
+const onlyEvenNumbers = sqn => {
+  let answer = []
+  sqn.forEach(n => {
+    if(n % 2 === 0) answer.push(n)
+  })
+  return answer
+}
 
 assert(onlyEvenNumbers([1, 2, 3]), [2], "Exercise 68");
 assert(onlyEvenNumbers([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), [-4, -2, 2, 4], "Exercise 68");
@@ -895,6 +941,13 @@ addToDone("Exercise 68 is correct.")
 
 // Exercise 69
 // Write a function definition named onlyPositiveNumbers that takes in sequence of numbers and returns the positive numbers in an array.
+const onlyPositiveNumbers = sqn => {
+    let answer = []
+    sqn.forEach(n => {
+      if(n > 0) answer.push(n)
+    })
+  return answer
+  }
 
 assert(onlyPositiveNumbers([1, 2, 3]), [1, 2, 3], "Exercise 69");
 assert(onlyPositiveNumbers([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), [1, 2, 3, 4, 5], "Exercise 69");
@@ -904,6 +957,15 @@ addToDone("Exercise 69 is correct.")
 
 // Exercise 70
 // Write a function definition named onlyNegativeNumbers that takes in sequence of numbers and returns the negative numbers in an array.
+const onlyNegativeNumbers = sqn => {
+    let answer = []
+    sqn.forEach(n => {
+      if(n < 0) answer.push(n)
+    })
+  return answer
+  }
+
+
 
 assert(onlyNegativeNumbers([1, 2, 3]), [], "Exercise 70");
 assert(onlyNegativeNumbers([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), [-5, -4, -3, -2, -1], "Exercise 70");
@@ -914,6 +976,13 @@ addToDone("Exercise 70 is correct.");
 
 // Exercise 71
 // Write a function definition named hasEvens that takes in sequence of numbers and returns true if there are any even numbers in the sequence
+const hasEvens = sqn => {
+  let answer = false 
+  sqn.forEach(n => {
+    if(n % 2 === 0) answer = true;
+  })
+  return answer
+}
 
 assert(hasEvens([1, 2, 3]), true, "Exercise 71");
 assert(hasEvens([2, 5, 6]), true, "Exercise 71");
@@ -925,6 +994,13 @@ addToDone("Exercise 71 is correct.");
 
 // Exercise 72
 // Write a function definition named countEvens that takes in sequence of numbers and returns the number of even numbers
+const countEvens = sqn => {
+  let count = 0
+  sqn.forEach(n => {
+    if(n % 2 === 0 ) count++
+  })
+  return count
+}
 
 assert(countEvens([1, 2, 3]), 1, "Exercise 72");
 assert(countEvens([2, 5, 6]), 2, "Exercise 72");
@@ -935,6 +1011,13 @@ addToDone("Exercise 72 is correct.")
 
 // Exercise 73
 // Write a function definition named hasOdds that takes in sequence of numbers and returns true if there are any odd numbers in the sequence
+const hasOdds = sqn => {
+  let answer = false
+  sqn.forEach(n => {
+    if(n % 2 !== 0) answer = true
+  })
+  return answer
+}
 
 assert(hasOdds([1, 2, 3]), true, "Exercise 73");
 assert(hasOdds([2, 5, 6]), true, "Exercise 73");
@@ -945,6 +1028,14 @@ addToDone("Exercise 73 is correct.")
 
 // Exercise 74
 // Write a function definition named countOdds that takes in sequence of numbers and returns a count of the any odd numbers in the sequence
+const countOdds = sqn => {
+  let count = 0
+  sqn.forEach(n => {
+    if(n % 2 !== 0 ) count++
+  })
+  return count
+}
+
 
 assert(countOdds([1, 2, 3]), 2, "Exercise 74");
 assert(countOdds([2, 5, 6]), 1, "Exercise 74");
@@ -955,6 +1046,13 @@ addToDone("Exercise 74 is correct.")
 
 // Exercise 75
 // Write a function definition named countNegatives that takes in sequence of numbers and returns a count of the number of negative numbers
+const countNegatives = sqn => {
+  let count = 0
+  sqn.forEach(n => {
+    if(n < 0 ) count++
+  })
+  return count
+}
 
 assert(countNegatives([1, -2, 3]), 1, "Exercise 75");
 assert(countNegatives([2, -5, -6]), 2, "Exercise 75");
@@ -964,6 +1062,13 @@ addToDone("Exercise 75 is correct.")
 
 // Exercise 76
 // Write a function definition named countPositives that takes in sequence of numbers and returns a count of the number of positive numbers
+const countPositives = sqn => {
+  let count = 0
+  sqn.forEach(n => {
+    if(n > 0 ) count++
+  })
+  return count
+}
 
 assert(countPositives([1, -2, 3]), 2, "Exercise 76");
 assert(countPositives([2, -5, -6]), 1, "Exercise 76");
@@ -974,6 +1079,14 @@ addToDone("Exercise 76 is correct.")
 
 // Exercise 77
 // Write a function definition named onlyPositiveEvens that takes in sequence of numbers and returns an array containing all the positive evens from the sequence
+const onlyPositiveEvens = sqn => {
+  let answer = []
+  sqn.forEach(n => {
+    if(n > 0) if(n % 2 === 0 ) answer.push(n)
+  })
+  return answer
+}
+
 
 assert(onlyPositiveEvens([1, -2, 3]), [], "Exercise 77");
 assert(onlyPositiveEvens([2, -5, -6]), [2], "Exercise 77");
@@ -984,6 +1097,14 @@ addToDone("Exercise 77 is correct.")
 
 // Exercise 78
 // Write a function definition named onlyPositiveOdds that takes in sequence of numbers and returns an array containing all the positive odd numbers from the sequence
+const onlyPositiveOdds = sqn => {
+  let answer = []
+  sqn.forEach(n => {
+    if(n > 0) if(n % 2 !== 0 ) answer.push(n)
+  })
+  return answer
+}
+
 
 assert(onlyPositiveOdds([1, -2, 3]), [1, 3], "Exercise 78");
 assert(onlyPositiveOdds([2, -5, -6]), [], "Exercise 78");
@@ -995,6 +1116,14 @@ addToDone("Exercise 78 is correct.")
 // Exercise 79
 // Write a function definition named onlyNegativeEvens that takes in sequence of numbers and returns an array containing all the negative even numbers from the sequence
 
+const onlyNegativeEvens = sqn => {
+  let answer = []
+  sqn.forEach(n => {
+    if(n < 0) if(n % 2 === 0 ) answer.push(n)
+  })
+  return answer
+}
+
 assert(onlyNegativeEvens([1, -2, 3]), [-2], "Exercise 79");
 assert(onlyNegativeEvens([2, -5, -6]), [-6], "Exercise 79");
 assert(onlyNegativeEvens([3, 3, 4, 6]), [], "Exercise 79");
@@ -1004,7 +1133,13 @@ addToDone("Exercise 79 is correct.")
 
 // Exercise 80
 // Write a function definition named onlyNegativeOdds that takes in sequence of numbers and returns an array containing all the negative odd numbers from the sequence
-
+const onlyNegativeOdds = sqn => {
+  let answer = []
+  sqn.forEach(n => {
+    if(n < 0) if(n % 2 !== 0 ) answer.push(n)
+  })
+  return answer
+}
 assert(onlyNegativeOdds([1, -2, 3]), [], "Exercise 80");
 assert(onlyNegativeOdds([2, -5, -6]), [-5], "Exercise 80");
 assert(onlyNegativeOdds([3, 3, 4, 6]), [], "Exercise 80");
@@ -1014,6 +1149,17 @@ addToDone("Exercise 80 is correct.")
 
 // Exercise 81
 // Write a function definition named shortestString that takes in an array of strings and returns the shortest string in the array.
+const shortestString = arr => {
+  let temp = 100
+  let answer
+  arr.forEach(s => {
+    if(s.length < temp ) {
+      temp = s.length
+      answer = s
+    }
+  })
+  return answer
+}
 
 assert(shortestString(["kiwi", "mango", "strawberry"]), "kiwi", "Exercise 81");
 assert(shortestString(["hello", "everybody"]), "hello", "Exercise 81");
@@ -1023,6 +1169,17 @@ addToDone("Exercise 81 is correct.")
 
 // Exercise 82
 // Write a function definition named longestString that takes in sequence of strings and returns the longest string in the array.
+const longestString = arr => {
+  let temp = 0
+  let answer
+  arr.forEach(s => {
+    if(s.length > temp ) {
+      temp = s.length
+      answer = s
+    }
+  })
+  return answer
+}
 
 assert(longestString(["kiwi", "mango", "strawberry"]), "strawberry", "Exercise 82");
 assert(longestString(["hello", "everybody"]), "everybody", "Exercise 82");
@@ -1031,8 +1188,15 @@ addToDone("Exercise 82 is correct.")
 
 
 // Exercise 83
-// Write a function definition named getUniqueValues that takes in an array and returns an with only the unique values from that array.
-
+// Write a function definition named getUniqueValues that takes in an array and returns an array with only the unique values from that array.
+const getUniqueValues = arr => {
+  let reduce = arr.reduce((obj, item) => {
+    if(!obj[item]) obj[item] = 1;
+    obj[item]++
+    return obj
+  }, {})
+  return Object.keys(reduce)
+}
 assert(getUniqueValues(["ant", "ant", "mosquito", "mosquito", "ladybug"]), ["ant", "mosquito", "ladybug"], "Exercise 83");
 assert(getUniqueValues(["b", "a", "n", "a", "n", "a", "s"]), ["b", "a", "n", "s"], "Exercise 83");
 assert(getUniqueValues(["mary", "had", "a", "little", "lamb", "little", "lamb", "little", "lamb"]), ["mary", "had", "a", "little", "lamb"], "Exercise 83");
@@ -1041,7 +1205,13 @@ addToDone("Exercise 83 is correct.")
 
 // Exercise 84
 // Write a function definition named elementsTimesTwo that takes in an array of numbers and returns an array with each value multiplied by 2.
-
+const elementsTimesTwo = arr => {
+  let answer = []
+  arr.forEach(n => {
+    answer.push(n * 2)
+  })
+  return answer
+}
 
 assert(elementsTimesTwo([1, 2, 3]), [2, 4, 6], "Exercise 84")
 assert(elementsTimesTwo([0, 0, 0]), [0, 0, 0], "Exercise 84")
@@ -1051,7 +1221,7 @@ addToDone("Exercise 84 is correct.")
 
 // Exercise 85
 // Write a function named flatten that takes in an array of arrays. Return the flattened array.
-
+const flatten = arr => arr.flat()
 
 assert(flatten([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6], "Exercise 85");
 assert(flatten([[1, 2, 3], [1, 2, 3], [1, 2, 3]]), [1, 2, 3, 1, 2, 3, 1, 2, 3], "Exercise 85");
@@ -1062,6 +1232,11 @@ addToDone("Exercise 85 is correct.")
 
 // Exercise 86
 // Write a function definition named addOneToArray that adds one to every number in an array
+const addOneToArray = arr => {
+  let answer = []
+  arr.forEach(n => answer.push(n+1))
+  return answer
+}
 
 assert(addOneToArray([1, 2, 3]), [2, 3, 4], "Exercise 86");
 assert(addOneToArray([4, 4, 4]), [5, 5, 5], "Exercise 86");
@@ -1089,7 +1264,7 @@ const thomasPaper = {
 
 // Exercise 87
 // Write a function named getPaperTitle that takes in a object and returns the title property
-
+const getPaperTitle = obj => obj.title
 assert(getPaperTitle(tukeyPaper), "The Future of Data Analysis", "Exercise 87");
 assert(getPaperTitle(thomasPaper), "A mathematical model of glutathione metabolism", "Exercise 87");
 addToDone("Exercise 87 is correct.")
@@ -1097,6 +1272,8 @@ addToDone("Exercise 87 is correct.")
 
 // Exercise 88
 // Write a function named getYearPublished that takes in an objects and returns the value behind the "year_published" key.
+const getYearPublished = obj => obj.year_published
+
 
 assert(getYearPublished(tukeyPaper), 1962, "Exercise 88");
 assert(getYearPublished(thomasPaper), 2008, "Exercise 88");
@@ -1112,6 +1289,7 @@ const book = {
 
 // Exercise 89
 // Write a function named getPrice that takes in a object and returns the price
+const getPrice = obj => obj.price
 
 assert(getPrice(book), 36.99, "Exercise 89");
 addToDone("Exercise 89 is complete.")
@@ -1120,7 +1298,7 @@ addToDone("Exercise 89 is complete.")
 
 // Exercise 90
 // Write a function named getBookAuthor that takes in a object (the above declared book variable) and returns the author's name
-
+const getBookAuthor = obj => obj.author
 
 assert(getBookAuthor(book), "Frances Buontempo", "Exercise 90");
 addToDone("Exercise 90 is complete.")
@@ -1155,6 +1333,7 @@ const books = [
 
 // Exercise 91
 // Write a function named getNumberOfBooks that takes in a array of objects and returns the number of objects in that array.
+const getNumberOfBooks = arr => arr.length
 
 assert(getNumberOfBooks(books), 4, "Exercise 91");
 addToDone("Exercise 91 is complete.")
@@ -1163,13 +1342,17 @@ addToDone("Exercise 91 is complete.")
 
 // Exercise 92
 // Write a function named totalOfBookPrices that takes in a array of objects and returns the sum total of all the book prices added together
-
+const totalOfBookPrices = arr => arr.reduce( ( a, { price } ) => a + price , 0)
 assert(totalOfBookPrices(books), 122.9, "Exercise 92")
 addToDone("Exercise 92 is complete.")
 
 
 // Exercise 93
 // Write a function named getAverageBookPrice that takes in a array of objects and returns the average book price.
+const getAverageBookPrice = arr => {
+  let reduce = arr.reduce((a, {price})=> a + price, 0)
+  return reduce / arr.length
+}
 
 assert(getAverageBookPrice(books), 30.725, "Exercise 93");
 addToDone("Exercise 93 is complete.")
@@ -1178,6 +1361,18 @@ addToDone("Exercise 93 is complete.")
 // Exercise 94
 // Write a function called highestPriceBook that takes in the above defined array of objects "books" and returns the object containing the title, price, and author of the book with the highest priced book.
 // Hint: Much like sometimes start functions with a variable set to zero, you may want to create a object with the price set to zero to compare to each object's price in the array
+const highestPriceBook = arr => {
+  let temp = 0 
+  let index;
+  arr.forEach((b,i)=> {
+    if(b.price > temp) {
+      temp = b.price
+      index = i
+    }
+  })
+  return arr[index]
+}
+
 
 assert(highestPriceBook(books), {
     "title": "The Visual Display of Quantitative Information",
@@ -1192,7 +1387,13 @@ addToDone("Exercise 94 is complete")
 // Exercise 95
 // Write a function called lowestPriceBook that takes in the above defined array of objects "books" and returns the object containing the title, price, and author of the book with the lowest priced book.
 // Hint: Much like sometimes start functions with a variable set to zero or float('inf'), you may want to create a object with the price set to float('inf') to compare to each object in the array
-
+const lowestPriceBook = arr => {
+  let temp = 10000000000
+  let index;
+  arr.forEach((b,i) => {
+    
+  })
+}
 
 assert(lowestPriceBook(books), {
     "title": "Weapons of Math Destruction",
